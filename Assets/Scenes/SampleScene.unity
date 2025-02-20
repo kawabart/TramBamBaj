@@ -176,10 +176,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4be3bf34baf154d4eb0674e0c0d9a732, type: 3}
   - {fileID: 21300000, guid: 7c519ba6b4fb9f74aa9f8d16bc3e5026, type: 3}
   values:
-  - 0
-  - 0.2
-  - 0.5
-  - 0.8
+  - 0.1
+  - 0.4
+  - 0.6
+  - 0.9
   - 1
 --- !u!1 &320657943
 GameObject:
