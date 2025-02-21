@@ -23,16 +23,16 @@ public class GameController : MonoBehaviour
     void Update()
     {
         float change = 0.001f + Time.timeSinceLevelLoad / 10000;
-        float input = Input.GetAxis("Horizontal");
+        float input = Input.GetAxis("Horizontal") * Time.deltaTime;
         Debug.Log(input);
 
         if (input < 0)
         {
-            currentValue -= 0.01f;
+            currentValue += input;
         }
         else if (input > 0)
         {
-            currentValue += 0.01f;
+            currentValue += input;
         }
 
         if (currentValue < 0.5f)
