@@ -16,12 +16,7 @@ public class GameController : MonoBehaviour
         float input = Input.GetAxis("Horizontal") * Time.deltaTime;
 
         currentValue += input;
-
-        if (currentValue < 0)
-            currentValue -= change;
-        else if (currentValue > 0)
-            currentValue += change;
-
+        currentValue += change * currentValue;
         currentValue = Mathf.Clamp(currentValue, -1f, 1f);
         slider.value = currentValue;
 
