@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
         else if (currentValue > 0.5f)
             currentValue += change;
 
+        currentValue = Mathf.Clamp01(currentValue);
         slider.value = currentValue;
 
         Debug.Log(currentValue);
