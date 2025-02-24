@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private SpriteRenderer photoHolder;
     [SerializeField] private Sprite[] photos;
     [SerializeField] private float[] thresholds;
-    float currentValue = 0.5f;
+    float currentValue = 0f;
 
     // Update is called once per frame
     void Update()
@@ -17,12 +17,12 @@ public class GameController : MonoBehaviour
 
         currentValue += input;
 
-        if (currentValue < 0.5f)
+        if (currentValue < 0)
             currentValue -= change;
-        else if (currentValue > 0.5f)
+        else if (currentValue > 0)
             currentValue += change;
 
-        currentValue = Mathf.Clamp01(currentValue);
+        currentValue = Mathf.Clamp(currentValue, -1f, 1f);
         slider.value = currentValue;
 
         Debug.Log(currentValue);
@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
             if (currentValue <= thresholds[i])
             {
                 photoHolder.sprite = photos[i];
-                photoHolder.flipX = (currentValue > 0.5f);
+                photoHolder.flipX = (currentValue > 0);
 
                 break;
             }

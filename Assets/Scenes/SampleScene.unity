@@ -175,11 +175,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 60ed912a380b3d74e986c556b042dca8, type: 3}
   - {fileID: 21300000, guid: 4be3bf34baf154d4eb0674e0c0d9a732, type: 3}
   - {fileID: 21300000, guid: 7c519ba6b4fb9f74aa9f8d16bc3e5026, type: 3}
-  values:
-  - 0.1
-  - 0.4
-  - 0.6
-  - 0.9
+  thresholds:
+  - -0.8
+  - -0.2
+  - 0.2
+  - 0.8
   - 1
 --- !u!1 &320657943
 GameObject:
@@ -832,10 +832,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 487184917}
   m_HandleRect: {fileID: 1100498009}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: -1
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
