@@ -8,11 +8,19 @@ public class GameController : MonoBehaviour
     [SerializeField] private Sprite[] photos;
     [SerializeField] private float[] thresholds;
     float currentValue = 0f;
+    bool levelStarted = false;
+    float levelStartTime = 0;
 
     // Update is called once per frame
     void Update()
     {
-        float change = 0.001f + Time.timeSinceLevelLoad / 10000;
+        if (!levelStarted && currentValue != 0)
+        {
+            levelStarted = true;
+            levelStartTime = Time.timeSinceLevelLoad;
+        }
+
+        float change = 0.001f + (Time.timeSinceLevelLoad - levelStartTime) / 10000;
         float input = Input.GetAxis("Horizontal") * Time.deltaTime;
 
         currentValue += input;
