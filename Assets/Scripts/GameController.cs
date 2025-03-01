@@ -20,15 +20,16 @@ public class GameController : MonoBehaviour
             levelStartTime = Time.timeSinceLevelLoad;
         }
 
-        float change = 0.001f + (Time.timeSinceLevelLoad - levelStartTime) / 10000;
-        float input = Input.GetAxis("Horizontal") * Time.deltaTime;
-
-        currentValue += input;
-        currentValue += change * currentValue;
+        float change = 0.8f + (Time.timeSinceLevelLoad - levelStartTime) / 100;
+        float input = Input.GetAxis("Horizontal");
+        
+        currentValue += change * currentValue * Time.deltaTime;
+        currentValue += input * Time.deltaTime;
         currentValue = Mathf.Clamp(currentValue, -1f, 1f);
         slider.value = currentValue;
 
         Debug.Log(currentValue);
+        Debug.Log(Time.timeSinceLevelLoad);
 
         for (int i = 0; i < thresholds.Length; i++)
         {
