@@ -14,7 +14,17 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!levelStarted && currentValue != 0)
+        if (levelStarted)
+        {
+            if (Input.GetKey(KeyCode.R))
+            {
+                levelStarted = false;
+                levelStartTime = 0;
+                currentValue = 0;
+                slider.value = currentValue;
+            }
+        }
+        else if (currentValue != 0)
         {
             levelStarted = true;
             levelStartTime = Time.timeSinceLevelLoad;
