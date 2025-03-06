@@ -7,9 +7,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private SpriteRenderer photoHolder;
     [SerializeField] private Sprite[] photos;
     [SerializeField] private float[] thresholds;
-    float currentValue = 0f;
+    float currentBalance = 0f;
+    float levelStartTime = 0f;
     bool levelStarted = false;
-    float levelStartTime = 0;
 
     // Update is called once per frame
     void Update()
@@ -20,33 +20,33 @@ public class GameController : MonoBehaviour
             {
                 levelStarted = false;
                 levelStartTime = 0;
-                currentValue = 0;
-                slider.value = currentValue;
+                currentBalance = 0;
+                slider.value = currentBalance;
             }
         }
-        else if (currentValue != 0)
+        else if (currentBalance != 0)
         {
             levelStarted = true;
             levelStartTime = Time.timeSinceLevelLoad;
         }
 
-        float change = 0.8f + (Time.timeSinceLevelLoad - levelStartTime) / 100;
+        float force = 0.8f + (Time.timeSinceLevelLoad - levelStartTime) / 100;
         float input = Input.GetAxis("Horizontal");
         
-        currentValue += change * currentValue * Time.deltaTime;
-        currentValue += input * Time.deltaTime;
-        currentValue = Mathf.Clamp(currentValue, -1f, 1f);
-        slider.value = currentValue;
+        currentBalance += force * currentBalance * Time.deltaTime;
+        currentBalance += input * Time.deltaTime;
+        currentBalance = Mathf.Clamp(currentBalance, -1f, 1f);
+        slider.value = currentBalance;
 
-        Debug.Log(currentValue);
-        Debug.Log(Time.timeSinceLevelLoad);
+        Debug.Log($"balance: {currentBalance}");
+        Debug.Log("time: " + Time.timeSinceLevelLoad);
 
         for (int i = 0; i < thresholds.Length; i++)
         {
-            if (currentValue <= thresholds[i])
+            if (currentBalance <= thresholds[i])
             {
                 photoHolder.sprite = photos[i];
-                photoHolder.flipX = (currentValue > 0);
+                photoHolder.flipX = (currentBalance > 0);
 
                 break;
             }
