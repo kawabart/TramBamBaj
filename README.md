@@ -18,7 +18,7 @@ in a __moving tram__!
 > In the game, your task is to keep your balance on the moving tram.\
 > \
 > Controls:
->   * *A/D* or arrow keys ◀️▶️
->   <!-- * controllers should also work -->
+>   * *A/D* or arrow keys ◀️▶️ <!-- * gamepads (or other standard controllers with horizontal input) should also work -->
+>   * *R* to restart 🔄
 
 <br><sup>_* Psst, actually it was exactly 60 minutes._</sup>
